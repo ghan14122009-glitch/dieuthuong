@@ -1,0 +1,1280 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Chúc mừng sinh nhật Diệu Thương 🎂</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Dancing+Script:wght@600&family=Be+Vietnam+Pro:wght@300;400;600&display=swap&subset=vietnamese"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --pink: #ff6fae;
+        --rose: #ff3d84;
+        --gold: #ffd9a8;
+        --text: #fff1f6;
+        --serif: "Playfair Display", "Times New Roman", Georgia, serif;
+        --script: "Dancing Script", "Segoe Script", "Brush Script MT", cursive;
+        --sans: "Be Vietnam Pro", "Segoe UI", Roboto, Arial, sans-serif;
+        box-sizing: border-box;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+      }
+      body {
+        background: radial-gradient(circle at 50% 30%, #4a1240, #2a0a24 70%);
+        color: var(--text);
+        font-family: var(--sans);
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      .glow {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.35;
+        pointer-events: none;
+      }
+      .g1 {
+        width: 50vmax;
+        height: 50vmax;
+        background: #ff2d8a;
+        left: -15vmax;
+        top: -10vmax;
+      }
+      .g2 {
+        width: 40vmax;
+        height: 40vmax;
+        background: #8a3dff;
+        right: -12vmax;
+        bottom: -10vmax;
+      }
+      .star {
+        position: fixed;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: #fff;
+        animation: tw 3s infinite alternate;
+        pointer-events: none;
+      }
+      @keyframes tw {
+        from {
+          opacity: 0.1;
+        }
+        to {
+          opacity: 0.9;
+          box-shadow: 0 0 8px #fff;
+        }
+      }
+
+      /* ---------- Cảnh 1: chữ bay ---------- */
+      #stage {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        transition:
+          opacity 1s,
+          transform 1s;
+        z-index: 2;
+      }
+      #stage.hide {
+        opacity: 0;
+        transform: scale(0.92);
+        pointer-events: none;
+      }
+      .greet {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: clamp(1.1rem, 5.2vw, 2rem);
+        letter-spacing: 0.14em;
+        color: var(--gold);
+        text-align: center;
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 1.4s,
+          transform 1.4s;
+        text-shadow: 0 0 22px rgba(255, 217, 168, 0.55);
+        padding: 0 1rem;
+      }
+      .greet.show {
+        opacity: 1;
+        transform: none;
+      }
+      .line {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        column-gap: 0.35em;
+        font-family: var(--serif);
+        font-weight: 900;
+        line-height: 1.15;
+      }
+      .word {
+        display: inline-flex;
+      }
+      .l1 {
+        font-size: clamp(2.6rem, 12vw, 5.8rem);
+        color: var(--pink);
+        text-shadow: 0 0 30px var(--rose);
+      }
+      .slot {
+        display: inline-block;
+        opacity: 0;
+        min-width: 0.05em;
+      }
+      .slot.ok {
+        opacity: 1;
+        animation: pop 0.6s;
+      }
+      @keyframes pop {
+        0% {
+          transform: scale(1.6);
+          filter: brightness(2.5);
+        }
+        100% {
+          transform: none;
+          filter: none;
+        }
+      }
+      .fly {
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 3;
+        pointer-events: none;
+        font-family: var(--serif);
+        font-weight: 900;
+        color: #ffb3d4;
+        text-shadow: 0 0 14px var(--rose);
+        will-change: transform;
+        transition: opacity 1s;
+      }
+      #hint {
+        font-family: var(--script);
+        font-size: 1.6rem;
+        color: var(--gold);
+        animation: pulse 1.6s infinite;
+        margin-top: 1rem;
+        text-align: center;
+        padding: 0 1rem;
+        transition: opacity 0.8s;
+      }
+      @keyframes pulse {
+        50% {
+          opacity: 0.5;
+          transform: scale(1.05);
+        }
+      }
+
+      /* ---------- Khung cảnh chung ---------- */
+      .scene {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        overflow-y: auto;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 1.2s;
+        z-index: 4;
+      }
+      .scene.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .wrap {
+        margin: auto;
+        width: 100%;
+        max-width: 440px;
+        padding: 1rem 1rem 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .t1 {
+        font-family: var(--script);
+        font-size: 1.35rem;
+        color: var(--gold);
+        margin: 0;
+      }
+      .t2 {
+        font-family: var(--serif);
+        font-size: clamp(1.7rem, 8vw, 2.4rem);
+        margin: 0 0 0.2rem;
+        background: linear-gradient(
+          90deg,
+          #ff9ec8,
+          #fff,
+          #ffd9a8,
+          #ff6fae,
+          #ff9ec8
+        );
+        background-size: 250% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: sh 5s linear infinite;
+      }
+      @keyframes sh {
+        to {
+          background-position: -250% 0;
+        }
+      }
+      #cnt {
+        font-size: 0.82rem;
+        font-weight: 300;
+        letter-spacing: 0.05em;
+        color: #ffd2e6;
+        margin: 0.6rem 0 0.2rem;
+        animation: pulse 2s infinite;
+      }
+
+      /* ---------- Bánh kem ---------- */
+      .cakewrap {
+        position: relative;
+        margin-top: 1.2rem;
+        width: min(340px, 86vw);
+      }
+      #aura {
+        position: absolute;
+        left: 50%;
+        top: -30px;
+        width: 140%;
+        height: 140px;
+        transform: translateX(-50%);
+        background: radial-gradient(
+          ellipse at 50% 60%,
+          rgba(255, 190, 90, 0.45),
+          transparent 70%
+        );
+        pointer-events: none;
+        transition: opacity 1s;
+      }
+      .cake {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+      #candles {
+        display: flex;
+        width: 62%;
+        margin-bottom: -4px;
+        position: relative;
+        z-index: 3;
+      }
+      .cndl {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: none;
+        border: 0;
+        padding: 0;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        position: relative;
+        outline: none;
+      }
+      .flame {
+        width: 14px;
+        height: 28px;
+        border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%;
+        background: radial-gradient(
+          ellipse at 50% 78%,
+          #fffbe0 0%,
+          #ffe27a 35%,
+          #ff9a2a 72%,
+          rgba(255, 90, 20, 0) 100%
+        );
+        box-shadow:
+          0 0 14px 5px rgba(255, 175, 60, 0.6),
+          0 0 34px 12px rgba(255, 120, 40, 0.25);
+        transform-origin: 50% 100%;
+        animation: flick 0.2s infinite alternate ease-in-out;
+        transition:
+          opacity 0.35s,
+          transform 0.35s;
+      }
+      @keyframes flick {
+        0% {
+          transform: scale(1, 1) rotate(-4deg);
+        }
+        50% {
+          transform: scale(0.9, 1.12) rotate(2deg);
+        }
+        100% {
+          transform: scale(1.05, 0.95) rotate(4deg);
+        }
+      }
+      .wick {
+        width: 2px;
+        height: 8px;
+        background: #3a2330;
+        border-radius: 2px;
+      }
+      .stick {
+        width: 13px;
+        height: 54px;
+        border-radius: 3px;
+        background: repeating-linear-gradient(
+          -45deg,
+          #fff 0 5px,
+          var(--c) 5px 10px
+        );
+        box-shadow:
+          inset -3px 0 4px rgba(0, 0, 0, 0.15),
+          0 0 8px rgba(255, 255, 255, 0.2);
+      }
+      .cndl:hover .stick,
+      .cndl:focus-visible .stick {
+        box-shadow: 0 0 14px var(--c);
+      }
+      .cndl.out {
+        cursor: default;
+      }
+      .cndl.out .flame {
+        animation: none;
+        opacity: 0;
+        transform: scale(0.1);
+      }
+      .cndl.out .wick {
+        background: #111;
+      }
+      .smoke {
+        position: absolute;
+        left: 50%;
+        top: 6px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(220, 220, 230, 0.6);
+        filter: blur(3px);
+        pointer-events: none;
+        opacity: 0;
+        animation: sm 1.8s ease-out forwards;
+      }
+      @keyframes sm {
+        from {
+          opacity: 0.75;
+          transform: translate(-50%, 0) scale(0.5);
+        }
+        to {
+          opacity: 0;
+          transform: translate(calc(-50% + var(--sx)), -80px) scale(2.4);
+        }
+      }
+      .layer {
+        position: relative;
+        z-index: 1;
+        border-radius: 14px 14px 8px 8px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        background-repeat: no-repeat;
+      }
+      .layer::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 16px;
+        border-radius: 14px 14px 0 0;
+        background: #fff7fb;
+      }
+      .layer::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 12px;
+        height: 14px;
+        background: radial-gradient(
+            circle at 50% 0,
+            #fff7fb 55%,
+            transparent 58%
+          )
+          0 0 / 22px 14px repeat-x;
+      }
+      .top {
+        width: 62%;
+        height: 58px;
+        background:
+          radial-gradient(circle, #fff 2px, transparent 3px) 14px 34px / 34px 26px,
+          linear-gradient(#ffb3d4, #ff8fbf);
+      }
+      .mid {
+        width: 80%;
+        height: 66px;
+        background:
+          radial-gradient(circle, #fff 2px, transparent 3px) 10px 38px / 30px 26px,
+          linear-gradient(#ffe2bd, #ffc58a);
+      }
+      .bot {
+        width: 100%;
+        height: 78px;
+        background:
+          radial-gradient(circle, #ffe9a8 2.5px, transparent 3.5px) 8px 42px / 36px 28px,
+          linear-gradient(#ff9fc9, #ff6fae);
+      }
+      .plate {
+        width: 112%;
+        height: 18px;
+        border-radius: 50%;
+        margin-top: -10px;
+        background: linear-gradient(#fff, #d9c3d6);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+      }
+
+      /* ---------- Thẻ lời chúc ---------- */
+      #wishes {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+        margin-top: 1.4rem;
+        width: 100%;
+      }
+      .wc {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        text-align: left;
+        padding: 0.6rem 0.65rem;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 182, 213, 0.2);
+        font-size: 0.74rem;
+        line-height: 1.4;
+        font-weight: 300;
+        min-height: 3.6rem;
+        opacity: 0.55;
+        transition: all 0.6s;
+      }
+      .wc i {
+        flex: none;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--c);
+        box-shadow: 0 0 10px var(--c);
+      }
+      .wc.on {
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.13);
+        border-color: var(--c);
+        animation: pop 0.6s;
+      }
+
+      .wpop {
+        position: fixed;
+        left: 50%;
+        top: 40%;
+        z-index: 20;
+        width: min(300px, 80vw);
+        padding: 1.1rem 1.2rem;
+        border-radius: 20px;
+        text-align: center;
+        font-size: 1.05rem;
+        line-height: 1.6;
+        font-weight: 400;
+        pointer-events: none;
+        background: linear-gradient(
+          160deg,
+          rgba(80, 20, 70, 0.92),
+          rgba(50, 10, 45, 0.92)
+        );
+        border: 1px solid var(--c);
+        box-shadow:
+          0 0 40px var(--c),
+          0 20px 60px rgba(0, 0, 0, 0.5);
+        transform: translate(-50%, -50%) scale(0.3);
+        opacity: 0;
+        transition:
+          transform 0.7s cubic-bezier(0.2, 1.3, 0.3, 1),
+          opacity 0.5s;
+      }
+      .wpop.in {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+      .wpop.shrink {
+        font-size: 0.74rem;
+        font-weight: 300;
+        line-height: 1.4;
+        text-align: left;
+        padding: 0.6rem 0.65rem 0.6rem 1.7rem;
+        border-radius: 14px;
+        box-shadow: 0 0 14px var(--c);
+        transition:
+          left 0.9s ease,
+          top 0.9s ease,
+          width 0.9s ease,
+          font-size 0.9s ease,
+          padding 0.9s ease,
+          border-radius 0.9s ease,
+          box-shadow 0.9s ease;
+      }
+
+      /* ---------- Lời chúc cuối ---------- */
+      #fin {
+        position: fixed;
+        inset: 0;
+        z-index: 25;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        background: rgba(30, 5, 25, 0.55);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 1s;
+      }
+      #fin.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .finbox {
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+        padding: 1.6rem 1.3rem 1.3rem;
+        border-radius: 24px;
+        background: linear-gradient(
+          160deg,
+          rgba(255, 255, 255, 0.16),
+          rgba(255, 255, 255, 0.05)
+        );
+        border: 1px solid rgba(255, 182, 213, 0.45);
+        box-shadow: 0 25px 90px rgba(255, 61, 132, 0.4);
+        transform: scale(0.85) translateY(30px);
+        transition: transform 1.1s cubic-bezier(0.2, 1.3, 0.3, 1);
+      }
+      #fin.show .finbox {
+        transform: none;
+      }
+      .finbox h2 {
+        font-family: var(--serif);
+        font-size: clamp(1.4rem, 6.5vw, 1.9rem);
+        margin: 0 0 0.7rem;
+        color: #ffc2dc;
+      }
+      .finbox p {
+        font-weight: 300;
+        font-size: 0.92rem;
+        line-height: 1.75;
+        margin: 0 0 1.1rem;
+      }
+      .b2 {
+        padding: 0.8rem 1.8rem;
+        border: 0;
+        border-radius: 99px;
+        font: 600 1rem var(--sans);
+        color: #fff;
+        cursor: pointer;
+        background: linear-gradient(135deg, #ff6fae, #ff3d84);
+        box-shadow: 0 0 28px rgba(255, 61, 132, 0.55);
+        transition: transform 0.2s;
+      }
+      .b2:hover {
+        transform: scale(1.07);
+      }
+
+      /* ---------- Cảnh cuối: THƯƠNG dọc + thơ ---------- */
+      #rows {
+        width: 100%;
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 3.4rem 1fr;
+        align-items: center;
+        gap: 0.8rem;
+        text-align: left;
+      }
+      .row .L {
+        font-family: var(--serif);
+        font-weight: 900;
+        font-size: clamp(2.1rem, 9vw, 3.1rem);
+        line-height: 1;
+        text-align: center;
+        color: var(--pink);
+        text-shadow: 0 0 18px rgba(255, 61, 132, 0.6);
+        opacity: 0;
+        transform: scale(0.3);
+        transition:
+          opacity 0.7s,
+          transform 0.7s cubic-bezier(0.2, 1.5, 0.3, 1),
+          color 0.6s,
+          text-shadow 0.6s;
+      }
+      .row.showL .L {
+        opacity: 1;
+        transform: none;
+      }
+      .row.cur .L {
+        color: #fff;
+        text-shadow:
+          0 0 14px #fff,
+          0 0 34px var(--rose);
+      }
+      .row .ln {
+        font-weight: 300;
+        font-size: clamp(0.88rem, 3.7vw, 1.05rem);
+        line-height: 1.55;
+        opacity: 0;
+        transform: translateX(-16px);
+        transition:
+          opacity 1.1s,
+          transform 1.1s;
+      }
+      .row .ln b {
+        font-family: var(--serif);
+        font-weight: 900;
+        color: var(--gold);
+        font-size: 1.25em;
+      }
+      .row.on .ln {
+        opacity: 1;
+        transform: none;
+      }
+      #endSign {
+        font-family: var(--script);
+        font-size: 1.4rem;
+        color: var(--gold);
+        margin-top: 1.3rem;
+        opacity: 0;
+        transition: opacity 1.4s;
+      }
+      #endSign.on2 {
+        opacity: 1;
+      }
+      #again {
+        margin-top: 1rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 1s;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: none;
+        border: 1px solid rgba(255, 182, 213, 0.5);
+      }
+      #again.on2 {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* ---------- Hiệu ứng nền ---------- */
+      .heart {
+        position: fixed;
+        bottom: -50px;
+        z-index: 1;
+        pointer-events: none;
+        animation: up linear forwards;
+        filter: drop-shadow(0 0 8px rgba(255, 61, 132, 0.7));
+      }
+      @keyframes up {
+        to {
+          transform: translate(var(--dx), -115vh) rotate(var(--rot));
+          opacity: 0;
+        }
+      }
+      .burst {
+        position: fixed;
+        z-index: 9;
+        pointer-events: none;
+        animation: bst 0.9s ease-out forwards;
+      }
+      @keyframes bst {
+        to {
+          transform: translate(var(--bx), var(--by)) scale(0.3);
+          opacity: 0;
+        }
+      }
+      #conf {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 30;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="glow g1"></div>
+    <div class="glow g2"></div>
+
+    <!-- 1 + 2. Chữ bay về và lời chúc -->
+    <div id="stage">
+      <div class="greet" id="greet"></div>
+      <div class="line l1" id="l1"></div>
+      <div id="hint">✦ Có điều gì đó đang bay lạc... ✦</div>
+    </div>
+
+    <!-- 3 + 4. Bánh kem và nến -->
+    <div class="scene" id="cakeScene">
+      <div class="wrap">
+        <p class="t1">Chúc mừng sinh nhật</p>
+        <h1 class="t2" id="name"></h1>
+        <div class="cakewrap">
+          <div id="aura"></div>
+          <div class="cake">
+            <div id="candles"></div>
+            <div class="layer top"></div>
+            <div class="layer mid"></div>
+            <div class="layer bot"></div>
+            <div class="plate"></div>
+          </div>
+        </div>
+        <div id="cnt">Chạm vào từng ngọn nến để thổi tắt 🕯️</div>
+        <div id="wishes"></div>
+      </div>
+    </div>
+
+    <!-- 5. Lời chúc cuối -->
+    <div id="fin">
+      <div class="finbox">
+        <h2 id="finTitle"></h2>
+        <p id="finText"></p>
+        <button class="b2" id="goBtn">Tiếp tục ✨</button>
+      </div>
+    </div>
+
+    <!-- 6. THƯƠNG dọc + thơ -->
+    <div class="scene" id="endScene" style="z-index: 6">
+      <div class="wrap">
+        <p class="t1">Một chút thơ gửi riêng cho</p>
+        <h1 class="t2" id="name2"></h1>
+        <div id="rows"></div>
+        <div id="endSign"></div>
+        <button class="b2" id="again">Xem lại 🔁</button>
+      </div>
+    </div>
+
+    <canvas id="conf"></canvas>
+
+    <script>
+      const CFG = {
+        greet: "CHÚC MỪNG SINH NHẬT",
+        name: "DIỆU THƯƠNG",
+        nice: "Diệu Thương",
+        // 4 lời chúc ứng với 4 cây nến
+        wishes: [
+          "Chúc Thương luôn khỏe mạnh và bình an. 🌿",
+          "Chúc mọi ước mơ của Thương đều thành hiện thực. ✨",
+          "Chúc nụ cười luôn rạng rỡ trên môi Thương. 🌸",
+          "Chúc Thương được yêu thương thật nhiều. 💖",
+        ],
+        finTitle: "🎉 Sinh nhật vui vẻ! 🎉",
+        finText:
+          "Chúc Thương tuổi mới thật rực rỡ: vui nhiều hơn lo, bình yên nhiều hơn bộn bề, và mỗi ngày đều có một lý do để mỉm cười. Cảm ơn Thương vì đã xuất hiện và làm thế giới này dịu dàng hơn. 🎂",
+        // 6 câu thơ, mỗi câu bắt đầu bằng T – H – Ư – Ơ – N – G
+        poem: [
+          ["T", "Tuổi mới đến mang theo ngàn nắng ấm,"],
+          ["H", "Hạnh phúc về đong đầy những yêu thương,"],
+          ["Ư", "Ước mơ nào cũng nở rộ thành hoa,"],
+          ["Ơ", "Ơn đời cho ta một người dịu dàng,"],
+          ["N", "Nụ cười ấy luôn rạng ngời như nắng,"],
+          ["G", "Gửi Thương muôn lời chúc mãi bình yên."],
+        ],
+        sign: "— Chúc mừng sinh nhật Diệu Thương 🎂 —",
+      };
+      const CANDLE_COLORS = ["#ff6fae", "#ffd9a8", "#b98cff", "#7fd1ff"];
+      const POOL = "ABCDEGHIKLMNOPQRSTUVXYĂÂÊÔƠƯ0123456789";
+      const HEARTS = ["🎈", "💖", "🎉", "✨", "🌸", "💗", "🎂", "💝"];
+      const R = (a, b) => Math.random() * (b - a) + a;
+      const rnd = (a) => a[Math.floor(Math.random() * a.length)];
+      const $ = (id) => document.getElementById(id);
+      const nfc = (s) => s.normalize("NFC");
+
+      /* ----- nền sao ----- */
+      for (let i = 0; i < 60; i++) {
+        const s = document.createElement("div");
+        s.className = "star";
+        s.style.cssText = `left:${R(0, 100)}vw;top:${R(0, 100)}vh;animation-delay:${R(0, 3)}s`;
+        document.body.appendChild(s);
+      }
+
+      $("greet").textContent = nfc(CFG.greet);
+      $("name").textContent = CFG.nice;
+      $("name2").textContent = CFG.nice;
+      $("finTitle").textContent = CFG.finTitle;
+      $("finText").textContent = CFG.finText;
+      $("endSign").textContent = CFG.sign;
+
+      /* =====================================================
+         1. Chữ cái xuất hiện ngẫu nhiên rồi bay về vị trí
+         ===================================================== */
+      const flyers = [];
+      let W = innerWidth,
+        H = innerHeight,
+        decoding = false,
+        landed = 0,
+        total = 0;
+
+      function build(el, text) {
+        nfc(text)
+          .split(" ")
+          .forEach((w) => {
+            const wd = document.createElement("span");
+            wd.className = "word";
+            [...w].forEach((c) => {
+              const s = document.createElement("span");
+              s.className = "slot";
+              s.textContent = c;
+              wd.appendChild(s);
+              flyers.push({ slot: s, c, real: true });
+            });
+            el.appendChild(wd);
+          });
+      }
+      build($("l1"), CFG.name);
+      total = flyers.length;
+
+      function mk(f, size) {
+        const e = document.createElement("div");
+        e.className = "fly";
+        e.style.fontSize = size + "px";
+        e.style.opacity = 0;
+        e.style.color = rnd(["#ffb3d4", "#ff6fae", "#ffd9a8", "#e0b3ff", "#fff"]);
+        e.textContent = rnd(POOL);
+        document.body.appendChild(e);
+        Object.assign(f, {
+          el: e,
+          x: R(0, W),
+          y: R(0, H),
+          vx: R(-2.6, 2.6),
+          vy: R(-2.6, 2.6),
+          rot: R(0, 360),
+          vr: R(-4, 4),
+          t: R(0, 6),
+          sc: 1,
+          state: "fly",
+        });
+        // xuất hiện ngẫu nhiên, không cùng lúc
+        setTimeout(() => {
+          if (!f.dead) e.style.opacity = f.real ? 1 : 0.55;
+        }, R(100, 1800));
+      }
+
+      function init() {
+        flyers.forEach((f) =>
+          mk(f, parseFloat(getComputedStyle(f.slot).fontSize)),
+        );
+        for (let i = 0; i < 34; i++) {
+          const f = { real: false };
+          flyers.push(f);
+          mk(f, R(18, 56));
+        }
+        requestAnimationFrame(tick);
+        setTimeout(decode, 2600); // tự động bay về sau vài giây
+      }
+
+      function tick() {
+        flyers.forEach((f) => {
+          if (f.state === "done" || !f.el) return;
+          if (f.state === "fly") {
+            f.vx += R(-0.12, 0.12);
+            f.vy += R(-0.12, 0.12);
+            const m = Math.hypot(f.vx, f.vy),
+              mx = 3.2;
+            if (m > mx) {
+              f.vx *= mx / m;
+              f.vy *= mx / m;
+            }
+            f.x += f.vx;
+            f.y += f.vy;
+            f.rot += f.vr;
+            f.t += 0.04;
+            f.sc = 1 + Math.sin(f.t) * 0.35;
+            if (f.x < 0 || f.x > W) f.vx *= -1;
+            if (f.y < 0 || f.y > H) f.vy *= -1;
+            f.x = Math.max(-10, Math.min(W + 10, f.x));
+            f.y = Math.max(-10, Math.min(H + 10, f.y));
+          } else {
+            const k = 0.075;
+            f.x += (f.tx - f.x) * k;
+            f.y += (f.ty - f.y) * k;
+            f.rot += (0 - f.rot) * k;
+            f.sc += (1 - f.sc) * k;
+            const d = Math.hypot(f.tx - f.x, f.ty - f.y);
+            if (!f.fixed && d < 90) {
+              f.fixed = true;
+              f.el.textContent = f.c; // đến gần thì hiện đúng chữ
+            }
+            if (d < 1.2 && Math.abs(f.rot) < 1) land(f);
+          }
+          f.el.style.transform = `translate(${f.x}px,${f.y}px) translate(-50%,-50%) rotate(${f.rot}deg) scale(${f.sc})`;
+        });
+        requestAnimationFrame(tick);
+      }
+
+      function land(f) {
+        f.state = "done";
+        f.el.remove();
+        f.slot.classList.add("ok");
+        sparkle(f.slot);
+        if (++landed === total) allLanded();
+      }
+
+      setInterval(
+        () =>
+          flyers.forEach((f) => {
+            if (
+              f.el &&
+              (f.state === "fly" || (f.state === "go" && !f.fixed)) &&
+              Math.random() < 0.4
+            )
+              f.el.textContent = rnd(POOL);
+          }),
+        150,
+      );
+
+      function decode() {
+        if (decoding) return;
+        decoding = true;
+        $("hint").textContent = "Các chữ cái đang tìm về nhau... ✨";
+        let i = 0;
+        flyers.forEach((f) => {
+          if (f.real) {
+            f.el.style.opacity = 1;
+            setTimeout(
+              () => {
+                const r = f.slot.getBoundingClientRect();
+                f.tx = r.left + r.width / 2;
+                f.ty = r.top + r.height / 2;
+                f.rot = (((f.rot % 360) + 540) % 360) - 180;
+                f.state = "go";
+              },
+              600 + i++ * 160,
+            );
+          } else {
+            f.dead = true;
+            setTimeout(() => (f.el.style.opacity = 0), 500 + R(0, 1500));
+            setTimeout(() => {
+              f.state = "done";
+              f.el.remove();
+            }, 2600);
+          }
+        });
+      }
+      $("stage").addEventListener("click", decode);
+      addEventListener("resize", () => {
+        W = innerWidth;
+        H = innerHeight;
+        sizeCanvas();
+      });
+      (document.fonts && document.fonts.ready
+        ? document.fonts.ready
+        : Promise.resolve()
+      ).then(init);
+
+      /* =====================================================
+         2. Hiện dòng CHÚC MỪNG SINH NHẬT DIỆU THƯƠNG
+         ===================================================== */
+      function allLanded() {
+        $("hint").style.opacity = 0;
+        $("greet").classList.add("show");
+        heartStorm();
+        setTimeout(toCake, 3600);
+      }
+
+      /* =====================================================
+         3 + 4. Bánh kem 4 nến, nhấn từng nến để tắt
+         ===================================================== */
+      const candles = [];
+      let out = 0;
+      CANDLE_COLORS.forEach((c, i) => {
+        const b = document.createElement("button");
+        b.className = "cndl";
+        b.style.setProperty("--c", c);
+        b.setAttribute("aria-label", "Thổi nến " + (i + 1));
+        b.innerHTML = `<span class="flame" style="animation-delay:-${R(0, 0.4).toFixed(2)}s"></span><span class="wick"></span><span class="stick"></span>`;
+        b.addEventListener("click", () => blow(i));
+        $("candles").appendChild(b);
+        candles.push(b);
+      });
+      $("wishes").innerHTML = CANDLE_COLORS.map(
+        (c, i) =>
+          `<div class="wc" style="--c:${c}"><i></i><span>✦ Lời chúc ${i + 1}</span></div>`,
+      ).join("");
+
+      function toCake() {
+        $("stage").classList.add("hide");
+        $("cakeScene").classList.add("show");
+        setInterval(heart, 600);
+      }
+
+      function smoke(c) {
+        for (let k = 0; k < 3; k++) {
+          const s = document.createElement("span");
+          s.className = "smoke";
+          s.style.setProperty("--sx", R(-18, 18) + "px");
+          s.style.animationDelay = k * 0.18 + "s";
+          c.appendChild(s);
+          setTimeout(() => s.remove(), 2300);
+        }
+      }
+
+      function blow(i) {
+        const c = candles[i];
+        if (c.classList.contains("out")) return;
+        c.classList.add("out");
+        smoke(c);
+        const r = c.getBoundingClientRect();
+        for (let k = 0; k < 6; k++)
+          burst(r.left + r.width / 2, r.top + 14, "✦", 10, CANDLE_COLORS[i]);
+        showWish(i);
+        out++;
+        $("aura").style.opacity = (4 - out) / 4;
+        if (out < 4) {
+          $("cnt").textContent = `Đã tắt ${out}/4 ngọn nến 🕯️`;
+        } else {
+          $("cnt").textContent = "Tất cả nến đã tắt 🎉";
+          wishChain.then(() => setTimeout(finish, 500));
+        }
+      }
+
+      // Lời chúc hiện to ở giữa, rồi thu nhỏ bay xuống đúng ô của nó.
+      // Nhiều nến tắt liên tiếp thì xếp hàng, lần lượt từng lời chúc.
+      const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+      let wishChain = Promise.resolve();
+      function showWish(i) {
+        wishChain = wishChain.then(async () => {
+          const w = $("wishes").children[i];
+          const pop = document.createElement("div");
+          pop.className = "wpop";
+          pop.style.setProperty("--c", CANDLE_COLORS[i]);
+          pop.textContent = CFG.wishes[i];
+          document.body.appendChild(pop);
+          await sleep(30);
+          pop.classList.add("in");
+          await sleep(2300);
+          w.scrollIntoView({ block: "nearest" });
+          const r = w.getBoundingClientRect();
+          pop.classList.add("shrink");
+          pop.style.left = r.left + r.width / 2 + "px";
+          pop.style.top = r.top + r.height / 2 + "px";
+          pop.style.width = r.width + "px";
+          await sleep(950);
+          w.classList.add("on");
+          w.querySelector("span").textContent = CFG.wishes[i];
+          pop.remove();
+          await sleep(250);
+        });
+        return wishChain;
+      }
+
+      /* =====================================================
+         5. Đủ 4 nến: pháo giấy + lời chúc cuối
+         ===================================================== */
+      const cv = $("conf"),
+        cx = cv.getContext("2d");
+      const CONF_COLORS = [
+        "#ff6fae",
+        "#ffd9a8",
+        "#b98cff",
+        "#7fd1ff",
+        "#fff",
+        "#ffe27a",
+        "#ff3d84",
+      ];
+      let P = [],
+        running = false,
+        ended = false,
+        finTimer;
+      function sizeCanvas() {
+        cv.width = innerWidth;
+        cv.height = innerHeight;
+      }
+      sizeCanvas();
+
+      function confetti(n, x, y, a0, a1) {
+        for (let i = 0; i < n; i++) {
+          const a = R(a0, a1),
+            v = R(6, 17);
+          P.push({
+            x,
+            y,
+            vx: Math.cos(a) * v,
+            vy: Math.sin(a) * v,
+            w: R(6, 12),
+            h: R(4, 8),
+            rot: R(0, 6.28),
+            vr: R(-0.3, 0.3),
+            c: rnd(CONF_COLORS),
+            life: R(130, 230),
+          });
+        }
+        kick();
+      }
+      function drizzle(n) {
+        for (let i = 0; i < n; i++)
+          P.push({
+            x: R(0, cv.width),
+            y: -10,
+            vx: R(-1, 1),
+            vy: R(1, 3),
+            w: R(6, 11),
+            h: R(4, 7),
+            rot: R(0, 6.28),
+            vr: R(-0.2, 0.2),
+            c: rnd(CONF_COLORS),
+            life: 420,
+          });
+        kick();
+      }
+      function kick() {
+        if (!running) {
+          running = true;
+          requestAnimationFrame(loop);
+        }
+      }
+      function loop() {
+        cx.clearRect(0, 0, cv.width, cv.height);
+        P = P.filter((p) => p.life > 0 && p.y < cv.height + 20);
+        P.forEach((p) => {
+          p.vy += 0.28;
+          p.vx *= 0.99;
+          p.vy *= 0.985;
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rot += p.vr;
+          p.life--;
+          cx.save();
+          cx.globalAlpha = Math.min(1, p.life / 40);
+          cx.translate(p.x, p.y);
+          cx.rotate(p.rot);
+          cx.fillStyle = p.c;
+          cx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          cx.restore();
+        });
+        if (P.length) requestAnimationFrame(loop);
+        else running = false;
+      }
+
+      function celebrate() {
+        const w = cv.width,
+          h = cv.height;
+        const d2r = Math.PI / 180;
+        confetti(110, w * 0.05, h * 0.85, -80 * d2r, -35 * d2r);
+        confetti(110, w * 0.95, h * 0.85, -145 * d2r, -100 * d2r);
+        setTimeout(() => {
+          confetti(120, w * 0.5, h * 0.7, -140 * d2r, -40 * d2r);
+        }, 500);
+        setTimeout(() => {
+          confetti(90, w * 0.1, h * 0.9, -80 * d2r, -35 * d2r);
+          confetti(90, w * 0.9, h * 0.9, -145 * d2r, -100 * d2r);
+        }, 1100);
+        setInterval(() => drizzle(2), 180);
+        heartStorm();
+      }
+
+      function finish() {
+        celebrate();
+        setTimeout(() => $("fin").classList.add("show"), 800);
+        finTimer = setTimeout(toEnd, 12000);
+      }
+      $("goBtn").onclick = toEnd;
+
+      /* =====================================================
+         6. THƯƠNG xếp dọc, 6 câu thơ T – H – Ư – Ơ – N – G
+         ===================================================== */
+      $("rows").innerHTML = CFG.poem
+        .map(([L, t]) => {
+          t = nfc(t);
+          return `<div class="row"><div class="L">${nfc(L)}</div><div class="ln"><b>${t[0]}</b>${t.slice(1)}</div></div>`;
+        })
+        .join("");
+
+      function toEnd() {
+        if (ended) return;
+        ended = true;
+        clearTimeout(finTimer);
+        $("fin").classList.remove("show");
+        $("cakeScene").classList.remove("show");
+        $("endScene").classList.add("show");
+        const rows = [...document.querySelectorAll(".row")];
+        // chữ THƯƠNG xuất hiện dọc từng chữ một
+        rows.forEach((r, k) =>
+          setTimeout(() => r.classList.add("showL"), 900 + k * 380),
+        );
+        // sau đó từng câu thơ hiện theo thứ tự T-H-Ư-Ơ-N-G
+        const t0 = 900 + 6 * 380 + 1200;
+        rows.forEach((r, k) =>
+          setTimeout(() => {
+            rows.forEach((x) => x.classList.remove("cur"));
+            r.classList.add("on", "cur");
+            r.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          }, t0 + k * 2100),
+        );
+        setTimeout(
+          () => {
+            rows.forEach((x) => x.classList.remove("cur"));
+            $("endSign").classList.add("on2");
+            $("again").classList.add("on2");
+            heartStorm();
+            confetti(80, cv.width * 0.5, cv.height * 0.8, -2.4, -0.7);
+          },
+          t0 + 6 * 2100 + 500,
+        );
+      }
+      $("again").onclick = () => location.reload();
+
+      /* ----- hiệu ứng dùng chung ----- */
+      function sparkle(el) {
+        const r = el.getBoundingClientRect();
+        for (let i = 0; i < 4; i++)
+          burst(r.left + r.width / 2, r.top + r.height / 2, "✦", 10);
+      }
+      function burst(x, y, ch, size, color) {
+        const b = document.createElement("div");
+        b.className = "burst";
+        b.textContent = ch;
+        b.style.cssText += `left:${x}px;top:${y}px;font-size:${size + R(0, 10)}px;color:${color || "#ffc2dc"};--bx:${R(-70, 70)}px;--by:${R(-70, 70)}px`;
+        document.body.appendChild(b);
+        setTimeout(() => b.remove(), 900);
+      }
+      function heart() {
+        const h = document.createElement("div");
+        h.className = "heart";
+        h.textContent = rnd(HEARTS);
+        const d = R(5, 11);
+        h.style.cssText += `left:${R(0, 100)}vw;font-size:${R(16, 40)}px;animation-duration:${d}s;--dx:${R(-80, 80)}px;--rot:${R(-40, 40)}deg;opacity:${R(0.6, 1)}`;
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), d * 1000);
+      }
+      function heartStorm() {
+        for (let i = 0; i < 30; i++) setTimeout(heart, i * 70);
+      }
+      addEventListener("keydown", (e) => {
+        if (e.code === "Space") {
+          e.preventDefault();
+          if (!decoding) decode();
+          else heartStorm();
+        }
+      });
+    </script>
+  </body>
+</html>
